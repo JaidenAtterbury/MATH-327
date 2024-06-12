@@ -1,0 +1,128 @@
+---
+title: "MATH 327 Homework 2"
+author: "Jaiden Atterbury"
+date: "2024-04-09"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Note:** When I say something like Theorem/Definition 1.1.1, I mean, lecture 1 page 1 part 1 of the given definition or theorem. Furthermore, Homework 1.1.1 means homework 1, exercise 1, problem 1.
+
+**Exercise 1.** Let $y$ be a non-negative real number $(0\leq y)$. Prove that if $y\leq\frac{1}{n}$ for every $n\in\mathbb{N}$, then $y=0$.
+
+**Proof:** (Proof by contradiction) Let $y\in\mathbb{R}$ such that $0\leq y$. Assume for the sake of contradiction that $y\neq0$. This implies that $0<y$. Since $y$ is a positive real number, by the Archimedian law of real numbers, there exists a positive integer $N\in\mathbb{N}$, such that $1<Ny$. Since $N\in\mathbb{N}$ implies that $N>0$, by Theorem 2.5.8, $N^{-1}=\frac{1}{N}>0$. Furthermore, letting $a=1$, $b=Ny$, and $c=N^{-1}$, by Definition 2.3.5, it follows that $y>\frac{1}{N}$. Since $y\leq\frac{1}{n}$ for every $n\in\mathbb{N}$, it must also be true for $n=N$. This means that for $n=N$, it follows that $y\leq\frac{1}{N}$. However, we just said that $y>\frac{1}{N}$. Thus we have reached a contradiction, and our assumption that $y\neq0$ was wrong. Therefore we have shown that if $y\leq\frac{1}{n}$ for every $n\in\mathbb{N}$, then $y=0$. $\square$
+
+\newpage
+
+**Exercise 2.** Let $A$ and $B$ be two subsets of real numbers. Assume that the sets are both non-empty and both bounded above. Let $Sup(A)$ be the least upper bound of $A$ and $Sup(B)$ be the least upper bound of $B$.
+
+1. Prove that $max(Sup(a),Sup(b))$ is the least upper bound of $A\cup B$.
+
+**Proof:** Since $A$ and $B$ are two non-empty subsets of real numbers that are also bounded above, using the first proof in the appendix, it follows that $A\cup B$ is also non-empty and bounded above. Since $A\cup B$ is bounded above, by the continuity axiom, it follows that $A\cup B$ has a least upper bound. We will denote the least upper bound of $A\cup B$ as $Sup(A\cup B)$. In order to show that $Sup(A\cup B)=max(Sup(a),Sup(b))$, we will split the proof into two parts. These two parts consist of showing that $Sup(A\cup B)\leq max(Sup(a),Sup(b))$, and showing that $Sup(A\cup B)\geq max(Sup(a),Sup(b))$.
+
+**Step 1: $\bf{Sup(A\cup B)\leq max(Sup(a),Sup(b))}$:** $\\$
+Let $x\in A\cup B$. In order to show that $Sup(A\cup B)\leq max(Sup(a),Sup(b))$, we will use the definition of the union of two sets and notice that $x\in A$ or $x\in B$. Thus there are two cases we must check, those being: $x\in A$ and $x\notin B$, as well as $x\notin A$ and $x\in B$. We do not need to check the case where $x\in A$ and $x\in B$ because in this case the validation of the previous two cases implies this case holds as well.
+
+**Case 1: $\bf{x\in A}$** $\\$
+If $x\in A$ and $x\notin B$, then it follows by the definition of an upper bound that $x\leq Sup(A)$. Furthermore, we know from the definition of a maximum value that $Sup(A)\leq max(Sup(A),Sup(B))$. Therefore we can write $x\leq Sup(A)\leq max(Sup(A),Sup(B))$, which implies that $x\leq max(Sup(A),Sup(B))$. In this case since we started with the assumption that $x\in A\cup B$, it follows that $max(Sup(A),Sup(B))$ is an upper bound for $A\cup B$ in this case.
+
+**Case 2: $\bf{x\in B}$** $\\$
+If $x\in B$ and $x\notin A$, then it follows by the definition of an upper bound that $x\leq Sup(B)$. Furthermore, we know from the definition of a maximum value that $Sup(B)\leq max(Sup(A),Sup(B))$. Therefore we can write $x\leq Sup(B)\leq max(Sup(A),Sup(B))$, which implies that $x\leq max(Sup(A),Sup(B))$. In this case since we started with the assumption that $x\in A\cup B$, it follows that $max(Sup(A),Sup(B))$ is an upper bound for $A\cup B$ in this case.
+
+Therefore, for all elements $x\in A\cup B$, regardless of if $x$ is an element of $A$, $B$, or both, $max(Sup(A),Sup(B))$ is greater than $x$. Thus $max(Sup(A),Sup(B))$ is an upper for $A\cup B$. However, we already know that $Sup(A\cup B)$ is the least upper bound, therefore it follows that $Sup(A\cup B)\leq max(Sup(A),Sup(B))$.
+
+**Step 2: $\bf{Sup(A\cup B)\geq max(Sup(a),Sup(b))}$:** $\\$
+In order to show that, $Sup(A\cup B)\geq max(Sup(a),Sup(b))$, we will use the fact that $A\subseteq A\cup B$ and $B\subseteq A\cup B$. Since $A\subseteq A\cup B$, it follows that $A\cup B$ could have more elements than $A$ alone. If it doesn't, then $A=A\cup B$, and hence it follows that $Sup(A)=Sup(A\cup B)$. However in the case that $A\neq A\cup B$, then the extra terms in $A\cup B$ could either be smaller than or equal to or greater than $max(A)$. In the former case, it would follow that $Sup(A)=Sup(A\cup B)$. However, in the latter case, it would follow that $Sup(A)<Sup(A\cup B)$. Putting these cases together we can see that $Sup(A)\leq Sup(A\cup B)$. The same reasoning leads us to the fact that $Sup(B)\leq Sup(A\cup B)$. Since $Sup(A)\leq Sup(A\cup B)$ and $Sup(B)\leq Sup(A\cup B)$, by the definition of a maximum, it follows that $max(Sup(A),Sup(B))\leq Sup(A\cup B)$.
+
+Therefore, since $Sup(A\cup B)\leq max(Sup(a),Sup(b))$ and $Sup(A\cup B)\geq max(Sup(a),Sup(b))$, by Definition 2.3.2, it follows that $Sup(A\cup B)=max(Sup(a),Sup(b))$. Therefore, we have shown that $max(Sup(a),Sup(b))$ is the least upper bound of $A\cup B$. $\square$
+
+\newpage
+
+2. Is it true that the least upper bound of $A\cap B$ is $min(Sup(A),Sup(b))$? Either prove the result or find a counterexample.
+
+This statement is false, and to disprove it we will find a counterexample. This is done below.
+
+**Proof:** Before we get into a concrete counterexample, note that for any case where $A\cap B$ is the empty set, it follows that this theorem doesn't hold since $Sup(A\cap B)$ does not exist in that case. We will now show that, even if $A\cap B$ is non-empty, if $Sup(A)$ and $Sup(B)$ aren't in both sets, then the theorem will not hold.
+
+Let $A=\{1,2,9\}$ and $B=\{1,2,8\}$. This implies that $Sup(A)=9$ and $Sup(B)=8$, respectively. Thus, $min(Sup(A),Sup(B))=min(8,9)=8$. Furthermore, since $A=\{1,2,9\}$ and $B=\{1,2,8\}$, it follows that $A\cap B=\{1,2\}$. This implies that $Sup(A\cap B)=max(1,2)=2$. Since $min(Sup(A),Sup(B))=8$ and $Sup(A\cap B)=2$, it follows that the least upper bound of $A\cap B$ is not $min(Sup(A),Sup(b))$. Thus we have shown, even if $A\cap B$ is not empty, the above theorem does not hold for all sets $A$ and $B$. $\square$
+
+\newpage
+
+**Exercise 3.** Prove using the definition of the limit that $\lim_{n\to\infty}\frac{n^2+1}{2n-1}=\infty$.
+
+**Discussion:** Consider any $A\in\mathbb{R}$. We need to determine how large $n$ must be to guarantee that $\frac{n^2+1}{2n-1}>A$. The idea is to bound the fraction $\frac{n^2+1}{2n-1}$ below by some multiple of $\frac{n^2}{n}=n$. Since $n^2+1>n^2$ and $2n-1<2n$ for all $n\in\mathbb{N}$, we have $\frac{n^2+1}{2n-1}>\frac{n^2}{2n}=\frac{n}{2}$. Thus it suffices to arrange for $\frac{1}{2}n>A\implies n>2A$.
+
+**Proof:** Let $A\in\mathbb{R}$ and let $N=2A$. Then $n>N$ implies $n>2A$, and hence $\frac{n}{2}>A$. Notice that $\frac{n^2}{2n}=\frac{n}{2}>A$. Furthermore, since $n^2+1>n^2$ and $2n-1<2n$, we have $\frac{n^2+1}{2n-1}>\frac{n^2}{2n}$, for all $n\in\mathbb{N}$. Therefore, for all $A\in\mathbb{R}$, it follows that $\exists N=2A$, such that $n>N=2A$ implies $\frac{n^2+1}{2n-1}>\frac{n^2}{2n}=\frac{n}{2}>A$. Therefore $\lim_{n\to\infty}\frac{n^2+1}{2n-1}=\infty$. $\square$
+
+\newpage
+
+**Exercise 4.** Prove using the definition of the limit that $\lim_{n\to\infty}\frac{1+n}{1-2n}=\frac{-1}{2}$.
+
+**Discussion:** For each $\epsilon>0$, we need to decide how big $n$ must be to guarantee $|\frac{1+n}{1-2n}-\frac{-1}{2}|=|\frac{1+n}{1-2n}+\frac{1}{2}|<\epsilon$. Thus we want $|\frac{2+2n+1-2n}{2(1-2n)}|<\epsilon$, which is equivalent to saying $|\frac{3}{2(1-2n)}|<\epsilon$. Since $2(1-2n)<0$ for all positive integers $n$, we must multiply by $-1$ to remove the absolute value symbol and obtain $\frac{-3}{2(1-2n)}=\frac{3}{2(2n-1)}<\epsilon$. We will now manipulate the inequality further to "solve" for $n$:
+$$\frac{3}{2(2n-1)}<\epsilon\implies\frac{3}{2\epsilon}<2n-1\implies\frac{3}{2\epsilon}+1<2n\implies\frac{3}{4\epsilon}+\frac{1}{2}<n$$
+Since our steps are reversible, we will make $N=\frac{3}{4\epsilon}+\frac{1}{2}$.
+
+**Proof:** Let $\epsilon>0$ and let $N=\frac{3}{4\epsilon}+\frac{1}{2}$. Then $n>N$ implies that $n>\frac{3}{4\epsilon}+\frac{1}{2}$, hence $2n>\frac{3}{2\epsilon}+1$, and thus $2n-1>\frac{3}{2\epsilon}$, which implies that $\frac{3}{2(2n-1)}<\epsilon$. Also, notice that $\frac{3}{2(2n-1)}=\frac{-3}{2(1-2n)}$ Furthermore, since $\frac{-3}{2(1-2n)}>0$ for all $n\in\mathbb{N}$, it follows from Definition 2.6 that $\frac{-3}{2(1-2n)}=|\frac{-3}{2(1-2n)}|$ Using the fact that $|-1|=1$ and Definition 2.7.2, we can say that
+$$|\frac{-3}{2(1-2n)}|=|-1|*|\frac{3}{2(1-2n)}|=|\frac{3}{2(1-2n)}|$$
+Consequently, if we notice that
+$$|\frac{3}{2(1-2n)}|=|\frac{2+2n+1-2n}{2(1-2n)}|=|\frac{2+2n}{2(1-2n)}+\frac{1-2n}{2(1-2n)}|=|\frac{1+n}{1-2n}+\frac{1}{2}|=|\frac{1+n}{1-2n}-\frac{-1}{2}|$$
+we can see that $|\frac{1+n}{1-2n}-\frac{-1}{2}|<\epsilon$. Therefore, for all $\epsilon>0$, $\exists N=\frac{3}{4\epsilon}+\frac{1}{2}$, such that $n>N$ implies $|\frac{1+n}{1-2n}-\frac{-1}{2}|<\epsilon$. Therefore, $\lim_{n\to\infty}\frac{1+n}{1-2n}=\frac{-1}{2}$. $\square$
+
+\newpage
+
+**Exercise 5.**
+
+1. Prove that for any sequence $u_n$, if $u_n$ is convergent, then $|u_n|$ is convergent.
+
+**Proof:** Let $u_n$ be any convergent sequence. Since $u_n$ is convergent this means that $\exists L$ such that, $\forall\epsilon>0$, $\exists N$ such that, if $n>N$, then $|u_n-L|<\epsilon$. Since $u_n,L\in\mathbb{R}$ and the real numbers are totally ordered, it follows by Theorem 3.7.4 (the second theorem proved in the appendix), that $||u_n|-|L||\leq|u_n-L|$. Since $|u_n-L|<\epsilon$, it follows that $||u_n|-|L||\leq|u_n-L|<\epsilon$. Thus, $\forall\epsilon>0$, $\exists N$ such that, if $n>N$, then $||u_n|-|L||<\epsilon$, which means that $|u_n|$ converges to $|L|$. Therefore for any sequence $u_n$, if $u_n$ is convergent, then $|u_n$ is convergent. $\square$
+
+\newpage
+
+2. Consider the converse: for any sequence $u_n$, if $|u_n|$ is convergent, then $u_n$ is convergent. Is the converse true? Prove your claim.
+
+After considering the converse, I believe that the converse is false. To see this, we will look at the inverse (also known as the contrapositive of the converse). The inverse states: "for any sequence $u_n$, if $u_n$ is divergent, then $|u_n|$ is divergent." To prove this statement wrong (and thus prove the converse wrong), we will provide a proof by counterexample.
+
+**Proof:** (Proof by counterexample) Let $u_n=(-1)^n$. As proven in Lecture 6, $u_n=(-1)^n$ is divergent. In particular, $\lim_{n\to\infty}(-1)^n$ does not exist (it bounces from $1$ to $-1$ infinitely). However, if we consider $|u_n|=|(-1)^n|$, then considering an even natural number, we can see that $|u_{2n}|=|(-1)^{2n}|=|1|=1$. Furthermore, considering an odd natural number, we can see that $|u_{2n+1}|=|(-1)^{2n+1}|=|-1|=1$. Therefore, it follows that for all $n\in\mathbb{N}$, $|u_n|=|(-1)^n|=1$. Lastly, as proven in Lecture 7 (and further emphasized in Lecture 8), $\lim_{n\to\infty}1=1$. Therefore, $|u_n|$ converges to $1$. Thus we have shown that the statement, "for any sequence $u_n$, if $u_n$ is divergent, then $|u_n|$ is divergent," is false. Thus, since the inverse is false, the converse must also be false since the two are logically equivalent. Therefore, we have shown that, "for any sequence $u_n$, if $|u_n|$ is convergent, then $u_n$ is convergent," is not a true statement. $\square$
+
+\newpage
+
+**Appendix.** $\\$
+In this section, theorems that we didn't prove in class will be proven so that they can be used in the exercises.
+
+1. Let $A$ and $B$ be two subsets of real numbers. Assume that the sets are both non-empty and both bounded above. Let $Sup(A)$ be the least upper bound of $A$ and $Sup(B)$ be the least upper bound of $B$. Prove that $A\cup B$ is non-empty and bounded above.
+
+**Proof:** We will start by showing that $A\cup B$ is non-empty. Since $A$ is non-empty, let $x\in A$. Since $x\in A$, it follows that $x\in A$ or $x\in B$. Therefore, from the definition of the union $x\in A\cup B$. This logic works for any element in $B$ as well. Thus we have shown that $A\cup B$ is non-empty when $A$ and $B$ are non-empty (this result also holds if only one of the sets were non-empty).
+
+We will now show that $A\cup B$ is bounded above. Since $A$ and $B$ are both bounded above, by the continuity axiom, they both have a least upper bound which we have called $Sup(A)$ and $Sup(B)$, respectively. We will focus on two cases. These two cases are: $Sup(A)\leq Sup(B)$, and $Sup(A)>Sup(B)$.
+
+**Case 1: $\bf{Sup(A)\leq Sup(B)}$:** For every element $a\in A$, by the definition of an upper bound, $a\leq Sup(A)$. However, we have assumed that $Sup(A)\leq Sup(B)$, therefore we can see that $a\leq Sup(A)\leq Sup(B)$, which implies $a\leq Sup(B)$. Also, $\forall b\in B$, by the definition of an upper bound, $b\leq Sup(B)$. Therefore $Sup(B)$ is an upper bound for both the sets $A$ and $B$.
+
+**Case 2: $\bf{Sup(A)>Sup(B)}$:** For every element $b\in B$, by the definition of an upper bound, $b\leq Sup(B)$. However, we have assumed that $Sup(A)>Sup(B)$, therefore we can see that $b\leq Sup(B)<Sup(A)$, which implies $b<Sup(A)$. Also, $\forall a\in A$, by the definition of an upper bound, $a\leq Sup(A)$. Therefore $Sup(A)$ is an upper bound for both the sets $A$ and $B$.
+
+Now, let $x\in A\cup B$. By the definition of the union, $x\in A$ or $x\in B$. Thus, from the above derivations, either $x\leq Sup(A)$ or $x<Sup(B)$. Thus, either $Sup(A)$ or $Sup(B)$ is an upper bound for $A\cup B$. Therefore, by the definition of an upper bound, $A\cup B$ is bounded above by either $Sup(A)$ or $Sup(B)$. Thus we have shown that $A\cup B$ is non-empty and bounded above. $\square$
+
+\newpage
+
+**Appendix.** $\\$
+In this section, theorems that we didn't prove in class will be proven so that they can be used in the exercises.
+
+2. For any $x,y\in\mathbb{R}$, it follows that $||a|-|b||\leq|a-b|$.
+
+**Proof:** Let $x,y\in\mathbb{R}$. By the triangle identity we have the following inequalities
+\begin{align*}
+|y| &= |x+y-x| \leq |x|+|y-x| \\
+|x| &= |y+x-y| \leq |y|+|x-y|
+\end{align*}
+By Theorem 2.7.2, we have that $|y-x|=|(-1)(x-y)|=|-1||x-y|=|x-y|$. This implies that $|x|+|y-x|=|x|+|x-y|$. Furthermore, subtracting $|x|$ and $|y|$ to the other side of the inequality and using Definition 2.3.4 we obtain the following inequalities
+\begin{align*}
+|y|-|x| &\leq |x-y| \\
+|x|-|y| &\leq |x-y|
+\end{align*}
+Noticing that $|y|-|x|$ is equivalent to $-(|x|-|y|)$, we can again rewrite the inequalities as \begin{align*}
+-(|x|-|y|) &\leq |x-y| \\
+|x|-|y| &\leq |x-y|
+\end{align*}
+Since $-(|x|-|y|)\leq|x-y|\implies|x|-|y|\geq-|x-y|$ and $|x|-|y|\leq|x-y|$, it follows that $-|x-y|\leq|x|-|y|\leq|x-y|$. Therefore, by Homework 1.3.2, it follows that $||x|-|y||\leq|x-y|$. $\square$

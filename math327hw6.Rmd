@@ -1,0 +1,102 @@
+---
+title: "MATH 327 Homework 6"
+author: "Jaiden Atterbury"
+date: "2024-05-12"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Note:** When I say something like Theorem/Definition 1.1.1, I mean, lecture 1 page 1 part 1 of the given definition or theorem. Furthermore, when I say something like Homework 1.1.1, I mean, homework 1, exercise 1, problem 1.
+
+**Exercise 1.** Let $a_n$ and $b_n$ be sequences with positive terms. Prove that if $\lim_{n\to\infty}\frac{a_n}{b_n}=0$ and the series $\sum^\infty_{n=1}b_n$ is convergent, then $\sum^\infty_{n=1}a_n$ is convergent.
+
+**Proof:** Let $a_n$ and $b_n$ be sequences with positive terms such that $\lim_{n\to\infty}\frac{a_n}{b_n}=0$ and the series $\sum^\infty_{n=1}b_n$ is convergent. Since $\lim_{n\to\infty}\frac{a_n}{b_n}=0$, by the definition of the limit of a sequence, for all $\epsilon$, there exists an $N$, such that, if $n>N$, then $|\frac{a_n}{b_n}-0|<\epsilon$. Since both $a_n$ and $b_n$ are sequences with positive terms for all $n$, we can rewrite this as $\frac{a_n}{b_n}<\epsilon$. Now, since this result holds for all $\epsilon$, choose $\epsilon=1$. Therefore we can see that $\frac{a_n}{b_n}<1$, and since $b_n>0$ for all $n$, it follows that $a_n<b_n$. Therefore, since $\sum^\infty_{n=1}b_n$ is a convergent series, as well as the fact that $\sum^\infty_{n=1}b_n$ and $\sum^\infty_{n=1}a_n$ are series with positive terms such that for all index greater than $N$, $0<a_n<b_n$, it follows from the Comparison test (inequality version) that $\sum^\infty_{n=1}a_n$ is convergent. $\square$
+
+\newpage
+
+**Exercise 2.** Are the following series convergent or divergent? If the series has a non-constant sign, determine whether the series is absolutely convergent, divergent or conditionally convergent. Prove your claim.
+
+1. $S=\sum^\infty_{n=1}\frac{3^n(n!)(n+1)}{2^n(2n)!}$
+
+In order to determine if $S=\sum^\infty_{n=1}\frac{3^n(n!)(n+1)}{2^n(2n)!}$ is convergent or divergent, since the divergence test gave us no information, we will try a different strategy of testing for convergence or divergence. Namely, we will look at the $n$th term of the sequence. That is, we will look at $s_n=\frac{3^n(n!)(n+1)}{2^n(2n)!}$. Since $3^n(n!)(n+1)>0$ and $2^n(2n)!>0$, it follows that $s_n=\frac{3^n(n!)(n+1)}{2^n(2n)!}>0$. Thus, we will be able to use the Ratio test (limit version). To perform the Ratio test (limit version) we will take the limit of $\frac{s_{n+1}}{s_n}$. Before we do this we will compute $\frac{s_{n+1}}{s_n}$. This is done below.
+$$\frac{s_{n+1}}{s_n}=\frac{\frac{3^{n+1}(n+2)(n+1)!}{2^{n+1}(2n+2)!}}{\frac{3^n(n+1)n!}{2^n(2n)!}}=\frac{3\cdot3^{n}(n+2)(n+1)n!}{2\cdot2^{n}(2n+2)(2n+1)(2n)!}\cdot\frac{2^n(2n)!}{3^n(n+1)n!}=\frac{3(n+2)}{2(2n+2)(2n+1)}.$$
+Now that we have found $\frac{s_{n+1}}{s_n}$, we will continue simplifying to get it into a form that will make it easier to use our limit theorems proven in lecture. Simplifying further we can see that
+$$\frac{s_{n+1}}{s_n}=\frac{3(n+2)}{2(2n+2)(2n+1)}=\frac{3n+6}{(4n+4)(2n+1)}=\frac{3n+6}{8n^2+12n+4}=\frac{\frac{3}{n}+\frac{6}{n^2}}{8+\frac{12}{n}+\frac{4}{n^2}}.$$
+We will now take the limit of $\frac{s_{n+1}}{s_n}$. In this derivation, we will use Theorem 24.1, Theorem 24.2, Theorem 24.3, and Theorem 24.4 (Operation on limits) from the midterm study guide in order to break up the limit. Furthermore, we will use Theorem 26.1 to show that the terms involving $n$ in the above expression for $\frac{s_{n+1}}{s_n}$ all go to zero. Taking this limit we see that
+$$\lim_{n\to\infty}\frac{s_{n+1}}{s_n}=\frac{\lim_{n\to\infty}\frac{3}{n}+\lim_{n\to\infty}\frac{6}{n^2}}{\lim_{n\to\infty}8+\lim_{n\to\infty}\frac{12}{n}+\lim_{n\to\infty}\frac{4}{n^2}}=\frac{0+0}{8+0+0}=0.$$
+As shown above, $\lim_{n\to\infty}\frac{s_{n+1}}{s_n}=0$, however, by Theorem 35 from the midterm study guide, this implies that $\lim\sup\left(\frac{s_{n+1}}{s_n}\right)=0$. Therefore, since $\lim\sup\left(\frac{s_{n+1}}{s_n}\right)=0<1$, by the Ratio test (limit version), the series $S=\sum^\infty_{n=1}\frac{3^n(n!)(n+1)}{2^n(2n)!}$ is convergent. $\square$
+
+2. $T=\sum^\infty_{n=1}\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$
+
+In order to determine if $T=\sum^\infty_{n=1}\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$ is convergent or divergent, since the divergence test gave us no information, we will try a different strategy of testing for convergence or divergence. Namely, we will look at the $n$th term of the sequence. That is, we will look at $t_n=\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$. Since $3n+5\sqrt{n}-4>0$ and $n\sqrt{n}+5n+2\sqrt{n}-2>0$, it follows that $t_n=\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}>0$. Thus, we will be able to use the Comparison test (inequality version). This procedure is done below.
+
+Since $n\geq\sqrt{n}$, this implies that $3n+5\sqrt{n}-4\geq3\sqrt{n}+5\sqrt{n}-4$. Furthermore, since $\sqrt{n}\geq1$ implies that $-4\sqrt{n}\leq-4$, we can see that $3\sqrt{n}+5\sqrt{n}-4\geq3\sqrt{n}+5\sqrt{n}-4\sqrt{n}=4\sqrt{n}$. Similarly, since $-2<0$, this implies that $n\sqrt{n}+5n+2\sqrt{n}-2<n\sqrt{n}+5n+2\sqrt{n}$. Furthermore, since $\sqrt{n}\geq1$ implies that $5n\sqrt{n}\geq5n$ and $n\geq1$ implies that $2n\sqrt{n}\geq2\sqrt{n}$, we can see that $n\sqrt{n}+5n+2\sqrt{n}\leq n\sqrt{n}+5n\sqrt{n}+2n\sqrt{n}=8n\sqrt{n}$ The previous two results imply that $\frac{4\sqrt{n}}{8n{\sqrt{n}}}<\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$, and hence $\frac{1}{2n}<\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$.
+
+In office hours, we were told that we could use the following fact without proof: if $\sum a_n$ diverges, then $A\sum a_n$, where $A$ is a constant, diverges as well. Since we have shown in lecture that $\sum\frac{1}{n}$ diverges, it follows that $\sum\frac{1}{2n}$ also diverges. Therefore, since $\sum\frac{1}{2n}$ is a divergent series of positive terms, $\sum\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$ is a series of positive terms, and $\frac{1}{2n}<\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$ for all $n$, by the Comparison test (inequality version), it follows that the series $T=\sum^\infty_{n=1}\frac{3n+5\sqrt{n}-4}{n\sqrt{n}+5n+2\sqrt{n}-2}$ is divergent. $\square$
+
+3. $U=\sum^\infty_{n=1}\frac{(-1)^nn^3}{n!}$
+
+Since $n^3>0$ and $n!>0$, this implies that $\frac{n^3}{n!}>0$. Therefore, since $\frac{n^3}{n!}>0$, the $(-1)^n$ term in the numerator of $\frac{(-1)^nn^3}{n!}$ controls the sign. When $n$ is even, the sign is positive, and when $n$ is odd, the sign is negative. Thus, the sign of $u_n$ alternates between terms. Thus, we must determine whether the series is absolutely convergent, conditionally convergent, or divergent. Since absolute convergence implies convergence, we will start by finding out if $U=\sum^\infty_{n=1}\frac{(-1)^nn^3}{n!}$ is absolutely convergent. This is done below.
+
+In order to find out if $U=\sum^\infty_{n=1}\frac{(-1)^nn^3}{n!}$ is absolutely convergent, given that the $n$th term in the corresponding sequence is $u_n=\frac{(-1)^nn^3}{n!}$, we will instead look at the $n$th term of the sequence $a_n=|u_n|=\frac{|(-1)^n|n^3}{n!}=\frac{n^3}{n!}$. Furthermore, the presence of the factorial term in the denominator tells us to apply the Ratio test (limit version). Since $\frac{n^3}{n!}>0$, we will be able to use the Ratio test (limit version). To perform the Ratio test (limit version) we will take the limit of $\frac{a_{n+1}}{a_n}$. Before we do this we will compute $\frac{a_{n+1}}{a_n}$. This is done below.
+$$\frac{a_{n+1}}{a_n}=\frac{\frac{(n+1)^3}{(n+1)!}}{\frac{n^3}{n!}}=\frac{(n+1)^3}{(n+1)!}\cdot\frac{n!}{n^3}=\frac{(n+1)^3}{(n+1)n!}\cdot\frac{n!}{n^3}=\frac{(n+1)^2}{n^3}=\frac{n^2+2n+1}{n^3}=\frac{\frac{1}{n}+\frac{2}{n^2}+\frac{1}{n^3}}{1}$$
+Now, using the limit laws from Theorem 24 of the midterm study guide, we can conclude that $\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=\frac{0+0+0}{1}=0$. Furthermore, by Theorem 35 from the midterm study guide, this implies that $\lim\sup\left(\frac{a_{n+1}}{a_n}\right)=0$. Therefore, since $\lim\sup\left(\frac{a_{n+1}}{a_n}\right)=0<1$, by the Ratio test (limit version), the series $\sum^\infty_{n=1}a_n=\sum^\infty_{n=1}|u_n|$ is convergent. Since, $\sum^\infty_{n=1}|u_n|$ is convergent, by the absolute convergence theorem, it follows that $\sum^\infty_{n=1}u_n$ is absolutely convergent. Therefore, $U=\sum^\infty_{n=1}\frac{(-1)^nn^3}{n!}$ is absolutely convergent (and thus $U=\sum^\infty_{n=1}\frac{(-1)^nn^3}{n!}$ is convergent). $\square$
+
+4. $V=\sum^\infty_{n=1}\frac{(-1)^n}{3n+(-1)^n}$
+
+Since $3n>1$ and $(-1)^n\in\{-1,1\}$, this implies that $3n+(-1)^n>0$, and hence $\frac{1}{3n+(-1)^n}>0$. Therefore, since $\frac{1}{3n+(-1)^n}>0$, the $(-1)^n$ term in the numerator of $\frac{(-1)^n}{3n+(-1)^n}$ controls the sign. When $n$ is even, the sign is positive, and when $n$ is odd, the sign is negative. Thus, the sign of $v_n$ alternates between terms. Thus, we must determine whether the series is absolutely convergent, conditionally convergent, or divergent. Since absolute convergence implies convergence, we will start by finding out if $V=\sum^\infty_{n=1}\frac{(-1)^n}{3n+(-1)^n}$ is absolutely convergent. This is done below.
+
+In order to find out if $V=\sum^\infty_{n=1}\frac{(-1)^n}{3n+(-1)^n}$ is absolutely convergent, given that the $n$th term in the corresponding sequence is $v_n=\frac{(-1)^n}{3n+(-1)^n}$, we will instead look at the $n$th term of the sequence $|v_n|=\frac{|(-1)^n|}{3n+(-1)^n}=\frac{1}{3n+(-1)^n}$. Furthermore, since $1\geq(-1)^n$, it follows that $3n+1\geq3n+(-1)^n$, and hence $\frac{1}{3n+1}\leq\frac{1}{3n+(-1)^n}$. Similarly, since $n\geq1$, it follows that $3n+n\geq3n+1$, and hence $\frac{1}{4n}=\frac{1}{3n+n}\leq\frac{1}{3n+1}$, which implies $\frac{1}{4n}\leq\frac{1}{3n+(-1)^n}$. In office hours, we were told that we could use the following fact without proof: if $\sum a_n$ diverges, then $A\sum a_n$, where $A$ is a constant, diverges as well. Since we have shown in lecture that $\sum\frac{1}{n}$ diverges, it follows that $\sum\frac{1}{4n}$ also diverges. Therefore, since $\sum\frac{1}{4n}$ is a divergent series of positive terms, $\sum\frac{1}{3n+(-1)^n}$ is a series of positive terms, and $\frac{1}{4n}\leq\frac{1}{3n+(-1)^n}$ for all $n$, by the Comparison test (inequality version), it follows that the series $\sum^\infty_{n=1}\frac{1}{3n+(-1)^n}$ is divergent. Therefore, the series $V=\sum^\infty_{n=1}\frac{(-1)^n}{3n+(-1)^n}$ is not absolutely convergent. Therefore we must now test for conditional convergence. This is done below.
+
+The appearance of the $(-1)^n$ in the numerator tells us that we should try the Alternating series test. The first step of this test is to check if the sign of $v_n$ alternates between each term. However, we've already shown that this results holds above, thus we can move onto the next step of the procedure.
+
+Next, we will check if the sequence $|v_n|$ is non-increasing/decreasing. Again, as shown above, $|v_n|=\frac{1}{3n+(-1)^n}$. Now, we must show that $|v_{n+1}|\leq|v_n|$. To do this we will consider two cases: when $n$ is even, and when $n$ is odd. First off, when $n$ is even, this implies that $n+1$ is odd. Therefore, $|v_n|=\frac{1}{3n+(-1)^n}=\frac{1}{3n+1}$, and $|v_{n+1}|=\frac{1}{3(n+1)+(-1)^{n+1}}=\frac{1}{3n+3-1}=\frac{1}{3n+2}$. Since, $2>1$, this implies that $3n+2>3n+1$, and thus $\frac{1}{3n+2}<\frac{1}{3n+1}$. Thus we have shown that, when $n$ is even, $|v_{n+1}|\leq|v_n|$. We will now consider the case when $n$ is odd. When $n$ is odd, this implies that $n+1$ is even. Therefore, $|v_n|=\frac{1}{3n+(-1)^n}=\frac{1}{3n-1}$, and $|v_{n+1}|=\frac{1}{3(n+1)+(-1)^{n+1}}=\frac{1}{3n+3+1}=\frac{1}{3n+4}$. Since, $4>-1$, this implies that $3n+4>3n-1$, and thus $\frac{1}{3n+4}<\frac{1}{3n-1}$. Thus we have shown that, when $n$ is odd, $|v_{n+1}|\leq|v_n|$. Thus, for all $n$, we have shown that $|v_{n+1}|\leq|v_n|$. Therefore, the sequence $|v_n|$ is non-increasing/decreasing. 
+
+Lastly, we will check if $\lim_{n\to\infty}|v_n|=0$. As shown numerous times above, $|v_n|=\frac{1}{3n+(-1)^n}=\frac{\frac{1}{n}}{3+\frac{(-1)^n}{n}}$. Since $(-1)^n$ is a constant for all $n$, using the limit laws from Theorem 24 of the midterm study guide, we can conclude that $\lim_{n\to\infty}|v_n|=\frac{0}{3+0}=0$. Therefore, we have shown that $\lim_{n\to\infty}|u_n|=0$.
+
+Since we have shown that the above three properties hold, by the Alternating series test, $V=\sum^\infty_{n=1}\frac{(-1)^n}{3n+(-1)^n}$ is a convergent series. Furthermore, since we have shown that $V=\sum^\infty_{n=1}\frac{(-1)^n}{3n+(-1)^n}$ is not absolutely convergent, we can say that the series is conditionally convergent. $\square$
+
+\newpage
+
+**Exercise 3.** Prove using the definition of the limit that $\lim_{x\to4}\sqrt{x+5}=3$.
+
+As stated in the hint, we need to find $\delta$ in terms of $\epsilon$ so that if $|x-4|<\delta$ then $|\sqrt{x+5}-3|<\epsilon$. As found scratch work not included in this write-up, one value of $\delta$ that makes this result hold is $\delta=\epsilon$. This result is proven below.
+
+**Proof:** Given $\epsilon>0$, choose $\delta=\epsilon$. Now suppose $0<|x-4|<\delta$. Since $\sqrt{x+5}-3=\frac{(\sqrt{x+5}-3)(\sqrt{x+5}+3)}{\sqrt{x+5}+3}=\frac{x+5-9}{\sqrt{x+5}+3}=\frac{x-4}{\sqrt{x+5}+3}$ and $\sqrt{x+5}+3>0$, it follows that $|\sqrt{x+5}-3|=\frac{|x-4|}{\sqrt{x+5}+3}$. Furthermore, since $\sqrt{x+5}\geq0$ and $3>1$, it follows that $\sqrt{x+5}+3>1$, which implies that $\frac{1}{\sqrt{x+5}+3}<1$. Therefore, since we supposed that $0<|x-4|$, we can say that $\frac{|x-4|}{\sqrt{x+5}+3}<|x-4|$. However, we also supposed that $|x-4|<\delta$ and chose $\delta=\epsilon$, thus $|x-4|<\epsilon$. Using the transitivity of the inequality, this means that $|\sqrt{x+5}-3|<\epsilon$. Hence, in conclusion, for all $\epsilon>0$, there exists a $\delta=\epsilon$, such that, if $0<|x-4|<\delta$, then $|\sqrt{x+5}-3|<\epsilon$. Thus we have shown that $\lim_{x\to4}\sqrt{x+5}=3$. $\square$
+
+\newpage
+
+**Exercise 4.** Let $f$ be defined by $f(x)=\frac{2x+3}{3x-1}$ for $x\in(-\infty,1/3)$. For any $\epsilon>0$, find $\delta$ such that if $|x|<\delta$ and $x<\frac{1}{3}$, then $|f(x)+3|<\epsilon$. What did you prove?
+
+As stated in the hint, if $\epsilon>0$, we need to find $\delta$ in terms of $\epsilon$ so that if $|x|<\delta$ and $x<1/3$, then $|f(x)+3|<\epsilon$. However, this equates to showing that $\lim_{x\to0}f(x)=-3$. Furthermore, since $f(0)=-3$, this also equates to showing that $\lim_{x\to0}f(x)=f(0)$ (that is, $f(x)$ is continuous at $x=0$). As found scratch work not included in this write-up, one value of $\delta$ that makes this result hold is $\delta=\min\left(\frac{1}{6},\frac{\epsilon}{22}\right)$. This result is proven below.
+
+**Proof:** Given $\epsilon>0$ and $x<\frac{1}{3}$, choose $\delta=\min\left(\frac{1}{6},\frac{\epsilon}{22}\right)$. Now suppose $0<|x|<\delta$. Since $f(x)=\frac{2x+3}{3x-1}$, this implies that $f(x)+3=\frac{2x+3}{3x-1}+3=\frac{2x+3+9x-3}{3x-1}=\frac{11x}{3x-1}$. Furthermore, since $x<1/3$, this implies that $3x<1$, and hence $3x-1<0$, which results in $|3x-1|=1-3x$. Therefore, $|f(x)+3|=\frac{11|x|}{1-3x}$. However, we supposed that $|x|<\delta$, and since $\delta=\min\left(\frac{1}{6},\frac{\epsilon}{22}\right)$, this implies that $|x|<1/6$. Since $|x|<1/6$, this implies that $\frac{-1}{6}<x<\frac{1}{6}$. However, for the sake of our computation, we will only need the fact that $x<\frac{1}{6}$. Multiplying this inequality by $-3$ we obtain $-3x>\frac{-1}{2}$. Adding one to both sides of this inequality we obtain $1-3x>\frac{1}{2}$. Lastly, taking the reciprocal of this inequality we obtain $\frac{1}{1-3x}<2$. Therefore, we can see that $|f(x)+3|=\frac{11|x|}{1-3x}<22|x|$. Furthermore, since $|x|<\delta$, and $\delta=\min\left(\frac{1}{6},\frac{\epsilon}{22}\right)$, we also have that $|x|<\frac{\epsilon}{22}$. Therefore, we can see that $|f(x)+3|=\frac{11|x|}{1-3x}<22|x|<\frac{22\epsilon}{22}=\epsilon$. Hence, in conclusion, for all $\epsilon>0$, there exists a $\delta=\min\left(\frac{1}{6},\frac{\epsilon}{22}\right)$, such that, if $0<|x-0|<\delta$, then $|f(x)+3|<\epsilon$. Thus we have shown that $\lim_{x\to0}f(x)=\lim_{x\to0}\frac{2x+3}{3x-1}=-3$. Furthermore, since $f(0)=-3$, we have also shown that $f(x)=\frac{2x+3}{3x-1}$ is continuous at $x=0$. $\square$.
+
+\newpage
+
+**Exercise 5.** Prove that if $\lim_{x\to x_0}f(x)=\infty$ and if $\lim_{x\to x_0}g(x)=L>0$, then
+
+1. $\lim_{x\to x_0}f+g=\infty.$
+
+**Proof:** $\\$
+Let $A\in\mathbb{R}$. Since $\lim_{x\to x_0}g(x)=L>0$, then for $\epsilon_g=1$, there exists a $\delta_g$, such that, if $0<|x-x_0|<\delta_g$, then
+$$|g(x)-L|<1\implies L-1<g(x).$$
+Also, since $\lim_{x\to x_0}f(x)=\infty$, then for $A_f=A-L+1$, there exists a $\delta_f$, such that, if $0<|x-x_0|<\delta_f$, then
+$$f(x)>A-L+1.$$
+Since $L-1<g(x)$ and $A-L+1<f(x)$, by Theorem 2.5.6, it follows that $A-L+1+L-1<f(x)+g(x)$. Now, if $\delta=\min(\delta_g,\delta_f)$, then $0<|x-x_0|<\delta$ implies that $f(x)+g(x)>A-L+1+L-1=A$.
+Therefore, $\forall A\in\mathbb{R}$, $\exists\delta=\min(\delta_g,\delta_f)$, such that, if $|x-x_0|<\delta$, then $f(x)+g(x)>A$. Thus we have shown that $\lim_{x\to x_0}f(x)+g(x)=\infty$. $\square$
+
+Note that, instead of $\epsilon_g=1$, we could've chosen any $\epsilon_g$ greater than $0$ and the proof still would've worked.
+
+2. $\lim_{x\to x_0}fg=\infty.$
+
+**Proof:** $\\$
+Let $A\in\mathbb{R}$. Since $\lim_{x\to x_0}g(x)=L>0$, then for $\epsilon_g=\frac{L}{2}$, there exists a $\delta_g$, such that, if $0<|x-x_0|<\delta_g$, then
+$$|g(x)-L|<\frac{L}{2}\implies L-\frac{L}{2}<g(x)\implies\frac{L}{2}<g(x).$$
+Also, since $\lim_{x\to x_0}f(x)=\infty$, then for $A_f=\frac{2|A|}{L}$, there exists a $\delta_f$, such that, if $0<|x-x_0|<\delta_f$, then
+$$f(x)>\frac{2|A|}{L}.$$
+Since $0<\frac{L}{2}<g(x)$ and $0\leq\frac{2|A|}{L}<f(x)$, by Theorem 2.5.7, it follows that $\frac{2|A|}{L}\cdot\frac{L}{2}<f(x)g(x)$. Now, if $\delta=\min(\delta_g,\delta_f)$, then $0<|x-x_0|<\delta$ implies that $f(x)g(x)>\frac{2|A|}{L}\cdot\frac{L}{2}=|A|\geq A$.
+Therefore, $\forall A\in\mathbb{R}$, $\exists\delta=\min(\delta_g,\delta_f)$, such that, if $|x-x_0|<\delta$, then $f(x)g(x)>A$. Thus we have shown that $\lim_{x\to x_0}f(x)g(x)=\infty$. $\square$

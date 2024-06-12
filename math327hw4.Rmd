@@ -1,0 +1,134 @@
+---
+title: "MATH 327 Homework 4"
+author: "Jaiden Atterbury"
+date: "2024-04-28"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Note:** When I say something like Theorem/Definition 1.1.1, I mean, lecture 1 page 1 part 1 of the given definition or theorem. Furthermore, when I say something like Homework 1.1.1, I mean, homework 1, exercise 1, problem 1.
+
+**Exercise 1.** Prove that the sequence $u_n=\frac{(-1)^nn+5}{2n-1}$ is not a Cauchy sequence.
+
+In order to show that the sequence $u_n=\frac{(-1)^nn+5}{2n-1}$ is not a Cauchy sequence, we will show that the sequence $u_n=\frac{(-1)^nn+5}{2n-1}$ is not convergent. To show that the sequence $u_n=\frac{(-1)^nn+5}{2n-1}$ is not convergent, we will use the contrapositive of Theorem 40 from the midterm formula sheet, which states that, if there exists subsequences that converge to different limits, then the original sequence is divergent.
+
+First, consider the subsequence of all of the terms with even indices. The terms in this subsequence take the form
+$$u_{2n}=\frac{(-1)^{2n}2n+5}{2(2n)-1}=\frac{2n+5}{4n-1}=\frac{2+\frac{5}{n}}{4-\frac{1}{n}}.$$
+Applying the limit laws from Theorem 24 from the midterm formula sheet, we can see that $\lim_{n\to\infty}u_{2n}=\frac{2+0}{4-0}=\frac{1}{2}$.
+
+On the other hand, if we consider the subsequence of all of the terms with odd indices, then the terms in this subsequence take the form
+$$u_{2n-1}=\frac{(-1)^{2n-1}(2n-1)+5}{2(2n-1)-1}=\frac{-(2n-1)+5}{4n-2-1}=\frac{-2n+1+5}{4n-3}=\frac{-2n+6}{4n-3}=\frac{-2+\frac{6}{n}}{4-\frac{3}{n}}.$$
+Applying the limit laws from Theorem 24 from the midterm formula sheet, we can see that $\lim_{n\to\infty}u_{2n-1}=\frac{-2+0}{4-0}=\frac{-1}{2}$.
+
+Since we have found two subsequences that converge to two different limits, we can use the contrapositive of Theorem 40 from the midterm formula sheet and say that $u_n=\frac{(-1)^nn+5}{2n-1}$ is not convergent. Since $u_n=\frac{(-1)^nn+5}{2n-1}$ is not convergent, it is thus not Cauchy. $\square$
+
+\newpage
+
+**Exercise 2.** The goal of the exercise is to prove that $\sum\limits^{\infty}_{k=1}\frac{1}{k^2}$ is convergent. You cannot use the p-test for this question.
+
+  1. Prove that $S_n=\sum\limits^{n}_{k=1}\frac{1}{k(k+1)}$ is a Cauchy sequence. You may consider the partial fraction decomposition of $\frac{1}{k(k+1)}$.
+  
+In order to prove that the sequence of partial sums $S_n=\sum\limits^{n}_{k=1}\frac{1}{k(k+1)}$ is a Cauchy sequence, we will show that the sequence of partial sums $S_n=\sum\limits^{n}_{k=1}\frac{1}{k(k+1)}$ is convergent. To do this, we will first notice that the partial fractions decomposition of $\frac{1}{k(k+1)}$ is $\frac{1}{k}-\frac{1}{k+1}$, which implies that we can rewrite our sequence as $S_n=\sum\limits^{n}_{k=1}\frac{1}{k}-\frac{1}{k+1}$. Writing out the $n$th term of this sequence we can see that
+\begin{align*}
+S_n &= \sum\limits^{n}_{k=1}\frac{1}{k}-\frac{1}{k+1} \\
+&= \left(1-\frac{1}{2}\right)+\left(\frac{1}{2}-\frac{1}{3}\right)+\left(\frac{1}{3}-\frac{1}{4}\right)+\dots+\left(\frac{1}{n-1}-\frac{1}{n}\right)+\left(\frac{1}{n}-\frac{1}{n+1}\right) \\
+&= 1-\frac{1}{n+1}.
+\end{align*}
+Thus, as can be seen from the above derivation, we have a closed form for the $n$th partial sum/$n$th term in the sequence, which in our case is $1-\frac{1}{n+1}$. Since we have this closed form of the sequence, we will take the limit of the sequence to see if it converges. Applying the limit laws from Theorem 24 from the midterm formula sheet, we can set that $$\lim_{n\to\infty}S_n=\lim_{n\to\infty}\left(1-\frac{1}{n+1}\right)=\lim_{n\to\infty}\left(1-\frac{\frac{1}{n}}{1+\frac{1}{n}}\right)=1-\frac{0}{1+0}=1.$$
+Therefore, since $S_n=\sum\limits^{n}_{k=1}\frac{1}{k(k+1)}$ is convergent, it follows that $S_n=\sum\limits^{n}_{k=1}\frac{1}{k(k+1)}$ is Cauchy. $\square$
+
+ 2. Prove that $\sum\limits^{\infty}_{k=1}\frac{1}{k^2}$ is convergent.
+ 
+In order to prove that $\sum\limits^{\infty}_{k=1}\frac{1}{k^2}$ is convergent, we will start by showing that the series $\sum\limits^{\infty}_{k=2}\frac{1}{k(k-1)}$ is convergent. To show that the series $\sum\limits^{\infty}_{k=2}\frac{1}{k(k-1)}$ is convergent, we will look at its sequence of partial sums $S_n=\sum\limits^{n}_{k=2}\frac{1}{k(k-1)}$, and show that it is convergent. To do this, we will first notice that the partial fractions decomposition of $\frac{1}{k(k-1)}$ is $\frac{1}{k-1}-\frac{1}{k}$, which implies that we can rewrite our sequence as $S_n=\sum\limits^{n}_{k=2}\frac{1}{k-1}-\frac{1}{k}$. Writing out the $n$th term of this sequence we can see that
+\begin{align*}
+S_n &= \sum\limits^{n}_{k=2}\frac{1}{k-1}-\frac{1}{k} \\
+&= \left(1-\frac{1}{2}\right)+\left(\frac{1}{2}-\frac{1}{3}\right)+\left(\frac{1}{3}-\frac{1}{4}\right)+\dots+\left(\frac{1}{n-2}-\frac{1}{n-1}\right)+\left(\frac{1}{n-1}-\frac{1}{n}\right) \\
+&= 1-\frac{1}{n}.
+\end{align*}
+Thus, as can be seen from the above derivation, we have a closed form for the $n$th partial sum/$n$th term in the sequence, which in our case is $1-\frac{1}{n}$. Since we have this closed form of the sequence, we will take the limit of the sequence to see if it converges. Applying the limit laws from Theorem 24 from the midterm formula sheet, we can set that $$\lim_{n\to\infty}S_n=\lim_{n\to\infty}\left(1-\frac{1}{n}\right)=1-0=1.$$
+Therefore, since $S_n=\sum\limits^{n}_{k=2}\frac{1}{k(k-1)}$ is convergent, it follows from the definition of series convergence, that the series $\sum\limits^{\infty}_{k=2}\frac{1}{k(k-1)}$ is convergent. Furthermore, since $\sum\frac{1}{k(k-1)}$ is a convergent series with positive terms, $\sum\frac{1}{k^2}$ is a series of positive terms, and $\frac{1}{k^2}<\frac{1}{k(k-1)}$ for all $k>1$, by the Comparison test (inequality version), it follows that $\sum\limits^{\infty}_{k=1}\frac{1}{k^2}$ is convergent. $\square$
+
+  3. Prove that the series $\sum\limits^{\infty}_{k=1}\frac{1}{k^p}$ is convergent for any real $p\geq2$.
+
+In order to prove that the series $\sum\limits^{\infty}_{k=1}\frac{1}{k^p}$ is convergent for any real $p\geq2$, we will use the fact that $\sum\limits^{\infty}_{k=1}\frac{1}{k^2}$ is convergent. Namely, since $\sum\frac{1}{k^2}$ is a convergent series with positive terms, $\sum\frac{1}{k^p}$ is a series of positive terms, and $\frac{1}{k^p}\leq\frac{1}{k^2}$ for all $k$ and $p\geq2$, by the Comparison test (inequality version), it follows that $\sum\limits^{\infty}_{k=1}\frac{1}{k^p}$ is convergent for any real $p\geq2$. $\square$
+
+\newpage
+
+**Exercise 3.** Determine whether the following series are convergent, divergent, absolutely convergent or conditionally convergent (several terms may apply). Justify your answer.
+
+  1. $\sum\limits^{\infty}_{n=1}\frac{n^3+2n-7}{5n^2-2}$.
+  
+In order to determine if $\sum\limits^{\infty}_{n=1}\frac{n^3+2n-7}{5n^2-2}$ is convergent, divergent, absolutely convergent or conditionally convergent, we will start by using the divergence test. Namely, we will check if $\lim_{n\to\infty}\frac{n^3+2n-7}{5n^2-2}\neq0$. Since the degree of the polynomial in the numerator is greater than the degree of the polynomial in the denominator, we know that $\lim_{n\to\infty}\frac{n^3+2n-7}{5n^2-2}=\infty\neq0$. Below we will formally prove that $\lim_{n\to\infty}\frac{n^3+2n-7}{5n^2-2}=\infty\neq0$, since we do not have any theorems that explicitly back up this claim.
+
+Let $A\in\mathbb{R}$. Also, let $N=\max\{3,5A\}$. Whatever the maximum value is, we will have that $n>N$ implies that $n>5A$. Furthermore, manipulating this inequality leads to the following
+$$5A<n\implies A<\frac{n}{5}=\frac{n^3}{5n^2}.$$
+Since $5n^2-2<5n^2$, this implies that $\frac{1}{5n^2}<\frac{1}{5n^2-2}$, and hence we can see that
+$$A<\frac{n^3}{5n^2}<\frac{n^3}{5n^2-2}=\frac{n^3}{5n^2-2}+\frac{2n}{5n^2-2}-\frac{2n}{5n^2-2}.$$
+Since $n>\max\{3,5A\}$, it follows that $n>3$, and hence $2n>7$, which implies that $\frac{2n}{5n^2-2}>\frac{7}{5n^2-2}$. Using this information we can see the following result
+$$A<\frac{n^3}{5n^2}<\frac{n^3}{5n^2-2}+\frac{2n}{5n^2-2}-\frac{2n}{5n^2-2}<\frac{n^3}{5n^2-2}+\frac{2n}{5n^2-2}-\frac{7}{5n^2-2}=\frac{n^3+2n-7}{5n^2-2}.$$
+Therefore, for any given $A$, $\frac{n^3+2n-7}{5n^2-2}>A$, which implies that $\lim_{n\to\infty}\frac{n^3+2n-7}{5n^2-2}=\infty$. Since $\lim_{n\to\infty}\frac{n^3+2n-7}{5n^2-2}=\infty\neq0$, by the divergence test, the series $\sum\limits^{\infty}_{n=1}\frac{n^3+2n-7}{5n^2-2}$ is divergent. $\square$
+
+  2. $\sum\limits^{\infty}_{n=1}\frac{3n^2+2n+1}{5n^3-6n+7}$.
+
+In order to determine if $\sum\limits^{\infty}_{n=1}\frac{3n^2+2n+1}{5n^3-6n+7}$ is convergent, divergent, absolutely convergent or conditionally convergent, since the divergence test gave us no information, we will try a different strategy. Namely, we will look at the $n$th term of the sequence. That is, we will look at $\frac{3n^2+2n+1}{5n^3-6n+7}$.
+
+First off, since $3n^2+2n+1>3n^2$ and $5n^3-6n+7<5n^3+7$, we can see that $\frac{3n^2+2n+1}{5n^3-6n+7}>\frac{3n^2}{5n^3+7}$. Furthermore, since $5n^3+7n^3>5n^3+7$, we can see that $\frac{3n^2}{5n^3+7}>\frac{3n^2}{5n^3+7n^3}=\frac{3n^2}{12n^3}=\frac{1}{4n}$. This implies that $\frac{3n^2+2n+1}{5n^3-6n+7}>\frac{1}{4n}$.
+
+In office hours, we were told that we could use the following fact without proof: if $\sum a_n$ diverges, then $A\sum a_n$, where $A$ is a constant, diverges as well. Since we have shown in lecture that $\sum\frac{1}{n}$ diverges, it follows that $\sum\frac{1}{4n}$ also diverges. Therefore, since $\sum\frac{1}{4n}$ is a divergent series with positive terms, $\sum\frac{3n^2+2n+1}{5n^3-6n+7}$ is a series of positive terms, and $\frac{1}{4n}<\frac{3n^2+2n+1}{5n^3-6n+7}$ for all $n$, by the Comparison test (inequality version), it follows that the series $\sum\limits^{\infty}_{n=1}\frac{3n^2+2n+1}{5n^3-6n+7}$ is divergent. $\square$
+
+Note that, we could have used the limit comparison test with $\sum\frac{1}{n}$ since both of the series would have positive terms.
+  
+  3. $\sum\limits^{\infty}_{n=1}\frac{7n^2-2n+4}{n^4+2n+1}$.
+
+In order to determine if $\sum\limits^{\infty}_{n=1}\frac{7n^2-2n+4}{n^4+2n+1}$ is convergent, divergent, absolutely convergent or conditionally convergent, since the divergence test gave us no information, we will try a different strategy. Namely, we will look at the $n$th term of the sequence. That is, we will look at $\frac{7n^2-2n+4}{n^4+2n+1}$.
+
+First off, since $7n^2-2n+4<7n^2+4$ and $n^4+2n+1>n^4$, we can see that $\frac{7n^2-2n+4}{n^4+2n+1}<\frac{7n^2+4}{n^4}$. Furthermore, since $7n^2+4<7n^2+4n^2$, we can see that $\frac{7n^2+4}{n^4}\leq\frac{7n^2+4n^2}{n^4}=\frac{11n^2}{n^4}=\frac{11}{n^2}$. This implies that $\frac{7n^2-2n+4}{n^4+2n+1}<\frac{11}{n^2}$.
+
+In office hours, we were told that we could use the following fact without proof: if $\sum a_n$ converges, then $A\sum a_n$, where $A$ is a constant, converges as well. Since we have shown in Exercise 2.2 of this homework that $\sum\frac{1}{n^2}$ converges, it follows that $\sum\frac{11}{n^2}$ also converges.
+
+Therefore, since $\sum\frac{11}{n^2}$ is a convergent series with positive terms, $\sum\frac{7n^2-2n+4}{n^4+2n+1}$ is a series of positive terms, and $\frac{7n^2-2n+4}{n^4+2n+1}<\frac{11}{n^2}$ for all $n$, by the Comparison test (inequality version), it follows that the series $\sum\limits^{\infty}_{n=1}\frac{7n^2-2n+4}{n^4+2n+1}$ is convergent. Furthermore, since $\frac{7n^2-2n+4}{n^4+2n+1}>0$, it follows that $|\frac{7n^2-2n+4}{n^4+2n+1}|=\frac{7n^2-2n+4}{n^4+2n+1}$, and hence the series $\sum\limits^{\infty}_{n=1}|\frac{7n^2-2n+4}{n^4+2n+1}|$ is also convergent. Thus $\sum\limits^{\infty}_{n=1}\frac{7n^2-2n+4}{n^4+2n+1}$ is absolutely convergent as well. $\square$
+
+Note that, we could have used the limit comparison test with $\sum\frac{1}{n^2}$ since both of the series would have positive terms.
+
+  4. $\sum\limits^{\infty}_{n=1}\frac{2^n}{n!}$.
+  
+In order to determine if $\sum\limits^{\infty}_{n=1}\frac{2^n}{n!}$ is convergent, divergent, absolutely convergent or conditionally convergent, since the divergence test gave us no information, we will try a different strategy. Namely, we will look at the $n$th term of the sequence. That is, we will look at $\frac{2^n}{n!}$.
+
+First off, since there is a factorial in the $n$th term, this tells us that we should try and use the Ratio test. Furthermore, since $\frac{2^n}{n!}>0$, this implies that $|\frac{2^n}{n!}|=\frac{2^n}{n!}$. Thus, if $\sum\limits^{\infty}_{n=1}\frac{2^n}{n!}$ is convergent, it will also be absolutely convergent. To perform the Ratio test we will take the limit of $\frac{a_{n+1}}{a_n}$. Before we do this we will compute $\frac{a_{n+1}}{a_n}$. This is done below.
+$$\frac{a_{n+1}}{a_n}=\frac{\frac{2^{n+1}}{(n+1)!}}{\frac{2^n}{n!}}=\frac{2^{n+1}}{(n+1)!}\cdot\frac{n!}{2^{n}}=\frac{2\cdot2^{n}}{(n+1)\cdot n!}\cdot\frac{n!}{2^{n}}=\frac{2}{n+1}.$$
+From the above derivation, we can see that $\frac{a_{n+1}}{a_n}=\frac{2}{n+1}=\frac{\frac{2}{n}}{1+\frac{1}{n}}$. Therefore, $\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=\lim_{n\to\infty}\frac{\frac{2}{n}}{1+\frac{1}{n}}=\frac{0}{1+0}=0$. Since $0<1$, it follows that the series $\sum\limits^{\infty}_{n=1}\frac{2^n}{n!}$ is convergent. Furthermore, as discussed previously, this series is also absolutely convergent. $\square$
+
+  5. $\sum\limits^{\infty}_{n=1}\frac{4^n-2^n}{3^n+3^{2n}}$.
+  
+In order to determine if $\sum\limits^{\infty}_{n=1}\frac{4^n-2^n}{3^n+3^{2n}}$ is convergent, divergent, absolutely convergent or conditionally convergent, since the divergence test gave us no information, we will try a different strategy. Namely, we will look at the $n$th term of the sequence. That is, we will look at $\frac{4^n-2^n}{3^n+3^{2n}}$.
+
+First off, since $\frac{4^n-2^n}{3^n+3^{2n}}>0$, this implies that $|\frac{4^n-2^n}{3^n+3^{2n}}|=\frac{4^n-2^n}{3^n+3^{2n}}$. Thus, if $\sum\limits^{\infty}_{n=1}\frac{4^n-2^n}{3^n+3^{2n}}$ is convergent, it will also be absolutely convergent. Since $4^n=2^{2n}$, we can rewrite the $n$th term as follows
+$$\frac{4^n-2^n}{3^n+3^{2n}}=\frac{2^{2n}-2^n}{3^n+3^{2n}}=\frac{2^{n}(2^{n}-1)}{3^n(1+3^{n})}=\frac{2^{n}(2^{n}-1)}{3^n(3^{n}+1)}.$$
+Since $2^n<3^n$, this implies that $2^n-1<3^n+1$. Therefore, we can see that the $n$th term is smaller than the following
+$$\frac{2^{n}(2^{n}-1)}{3^n(3^{n}+1)}<\frac{2^{n}(3^{n}+1)}{3^n(3^{n}+1)}=\frac{2^n}{3^n}=\left(\frac{2}{3}\right)^n.$$
+This implies that $\frac{4^n-2^n}{3^n+3^{2n}}<\left(\frac{2}{3}\right)^n$. However, notice that $\sum\left(\frac{2}{3}\right)^n$ is a geometric series, and thus $|\frac{2}{3}|<1$, which implies that this series converges. Therefore, since $\sum\left(\frac{2}{3}\right)^n$ is a convergent series with positive terms, $\frac{4^n-2^n}{3^n+3^{2n}}$ is a series of positive terms, and $\frac{4^n-2^n}{3^n+3^{2n}}<\left(\frac{2}{3}\right)^n$ for all $n$, by the Comparison test (inequality version), it follows that the series $\sum\limits^{\infty}_{n=1}\frac{4^n-2^n}{3^n+3^{2n}}$ is convergent. Furthermore, as discussed previously, this series is also absolutely convergent. $\square$
+
+  6. $\sum\limits^{\infty}_{n=1}\frac{5n-\cos(3n)}{4n^2-6n}$.
+
+In order to determine if $\sum\limits^{\infty}_{n=1}\frac{5n-\cos(3n)}{4n^2-6n}$ is convergent, divergent, absolutely convergent or conditionally convergent, since the divergence test gave us no information, we will try a different strategy. Namely, we will look at the $n$th term of the sequence. That is, we will look at $\frac{5n-\cos(3n)}{4n^2-6n}$. Before we do this, it is important to note that the terms of $\frac{5n-\cos(3n)}{4n^2-6n}$ are only positive when $n>1$, so all further calculations will rely on the fact that $n>1$.
+
+First off, by the definition of the cosine function, we can see that $-1\leq\cos(3n)\leq1$, and hence it follows that $\frac{5n-\cos(3n)}{4n^2-6n}\geq\frac{5n-1}{4n^2-6n}$. Furthermore, since $5n-1>5n-n$ and $4n^2-6n<4n^2$, it follows that $\frac{5n-1}{4n^2-6n}>\frac{5n-n}{4n^2}=\frac{4n}{4n^2}=\frac{1}{n}$. This implies that $\frac{5n-\cos(3n)}{4n^2-6n}>\frac{1}{n}$. Therefore, since $\sum\frac{1}{n}$ is a divergent series with positive terms, $\sum\frac{5n-\cos(3n)}{4n^2-6n}$ is a series of positive terms when $n>1$, and $\frac{1}{n}<\frac{5n-\cos(3n)}{4n^2-6n}$ for all $n>1$, by the Comparison test (inequality version), it follows that the series $\sum\limits^{\infty}_{n=1}\frac{5n-\cos(3n)}{4n^2-6n}$ is divergent. $\square$
+ 
+  7. $\sum\limits^{\infty}_{n=1}\frac{(-1)^n(n+3)}{n+1}$.
+
+In order to determine if $\sum\limits^{\infty}_{n=1}\frac{(-1)^n(n+3)}{n+1}$ is convergent, divergent, absolutely convergent or conditionally convergent, we will start by using the divergence test. Namely, we will check if $\lim_{n\to\infty}\frac{(-1)^n(n+3)}{n+1}\neq0$.
+
+To show that $\lim_{n\to\infty}\frac{(-1)^n(n+3)}{n+1}\neq0$, we will show that the sequence itself is not convergent in the first place. To show that the sequence $u_n=\frac{(-1)^n(n+3)}{n+1}$ is not convergent, we will use the contrapositive of Theorem 40 from the midterm formula sheet, which states that, if there exists subsequences that converge to different limits, then the original sequence is divergent.
+
+First, consider the subsequence of all of the terms with even indices. The terms in this subsequence take the form
+$$u_{2n}=\frac{(-1)^{2n}(2n+3)}{2n+1}=\frac{2n+3}{2n+1}=\frac{2+\frac{3}{n}}{2+\frac{1}{n}}.$$
+Applying the limit laws from Theorem 24 from the midterm formula sheet, we can see that $\lim_{n\to\infty}u_{2n}=\frac{2+0}{2+0}=\frac{2}{2}=1$.
+
+On the other hand, if we consider the subsequence of all of the terms with odd indices, then the terms in this subsequence take the form
+$$u_{2n}=\frac{(-1)^{2n-1}(2n-1+3)}{2n-1+1}=\frac{-(2n+2)}{2n}=\frac{-2n-2}{2n}=\frac{-2-\frac{2}{n}}{2}.$$
+Applying the limit laws from Theorem 24 from the midterm formula sheet, we can see that $\lim_{n\to\infty}u_{2n-1}=\frac{-2-0}{2}=\frac{-2}{2}=-1$.
+
+Since we have found two subsequences that converge to two different limits, we can use the contrapositive of Theorem 40 from the midterm formula sheet and say that $u_n=\frac{(-1)^n(n+3)}{n+1}$ is not convergent, and is thus not equal to zero. Since $\lim_{n\to\infty}\frac{(-1)^n(n+3)}{n+1}\neq0$, by the divergence test, the series $\sum\limits^{\infty}_{n=1}\frac{(-1)^n(n+3)}{n+1}$ is divergent. $\square$

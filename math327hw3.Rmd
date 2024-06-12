@@ -1,0 +1,116 @@
+---
+title: "MATH 327 Homework 3"
+author: "Jaiden Atterbury"
+date: "2024-04-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Note:** When I say something like Theorem/Definition 1.1.1, I mean, lecture 1 page 1 part 1 of the given definition or theorem. Furthermore, when I say something like Homework 1.1.1, I mean, homework 1, exercise 1, problem 1.
+
+**Exercise 1.** Prove using the definition of the limit that $\lim\limits_{n\to\infty}\frac{2n+1}{n+2}+\sqrt{\frac{n}{n+3}}=3$.
+
+**Proof:** $\\$
+Let $\epsilon>0$ and let $N=\max\{\frac{6}{\epsilon}-2,\frac{6}{\epsilon}-3\}$. Then $n>N$ implies that $n>\frac{6}{\epsilon}-2$ and $n>\frac{6}{\epsilon}-3$. We will start with $n>\frac{6}{\epsilon}-2$, and then move onto $n>\frac{6}{\epsilon}-3$. Since $n>N$ implies that $n>\frac{6}{\epsilon}-2$, we can manipulate the inequality as follows
+$$n>\frac{6}{\epsilon}-2\implies n+2>\frac{6}{\epsilon}\implies\epsilon>\frac{6}{n+2}\implies\frac{\epsilon}{2}>\frac{3}{n+2}.$$
+Since $\frac{-3}{n+2}<0,\:\forall n$, it follows that $|\frac{-3}{n+2}|=\frac{3}{n+2}$, and hence we can see that $\frac{\epsilon}{2}>|\frac{-3}{n+2}|$. We can further manipulate the inequality as follows
+$$\frac{\epsilon}{2}>|\frac{-3}{n+2}|\implies\frac{\epsilon}{2}>|\frac{2n+1-2n-4}{n+2}|\implies\frac{\epsilon}{2}>|\frac{2n+1}{n+2}-\frac{2n+4}{n+2}|\implies\frac{\epsilon}{2}>|\frac{2n+1}{n+2}-\frac{2(n+2)}{n+2}|.$$
+Therefore, we can see that $\frac{\epsilon}{2}>|\frac{2n+1}{n+2}-2|$. Moving on to the next part of the proof, since $n>N$ also implies that $n>\frac{6}{\epsilon}-3$ we can manipulate the inequality as follows
+\begin{align*}
+n>\frac{6}{\epsilon}-3&\implies n+3>\frac{6}{\epsilon}\implies\epsilon>\frac{6}{n+3}\implies\frac{\epsilon}{2}>\frac{3}{n+3}\implies\frac{\epsilon}{2}>\frac{n+3-n}{n+3} \\
+&\implies\frac{\epsilon}{2}>\frac{n+3}{n+3}-\frac{n}{n+3}\implies\frac{\epsilon}{2}>1-\frac{n}{n+3}\implies\frac{\epsilon}{2}>\frac{1-\frac{n}{n+3}}{1}.
+\end{align*}
+Note that, since $\sqrt{\frac{n}{n+3}}>0,\:\forall n$, it follows that $1+\sqrt{\frac{n}{n+3}}>\sqrt{\frac{n}{n+3}},\:\forall n$. Furthermore, since $1+\sqrt{\frac{n}{n+3}}>\sqrt{\frac{n}{n+3}},\:\forall n$, it follows that $\frac{1-\frac{n}{n+3}}{1}>\frac{1-\frac{n}{n+3}}{1+\sqrt{\frac{n}{n+3}}}$. The previous result implies that
+$$\frac{\epsilon}{2}>\frac{1-\frac{n}{n+3}}{1+\sqrt{\frac{n}{n+3}}}\implies\frac{\epsilon}{2}>\frac{\left(1-\sqrt{\frac{n}{n+3}}\right) \left(1+\sqrt{\frac{n}{n+3}}\right)}{1+\sqrt{\frac{n}{n+3}}}\implies\frac{\epsilon}{2}>1-\sqrt{\frac{n}{n+3}}$$
+Since $\sqrt{\frac{n}{n+3}}-1<0,\:\forall n$, it follows that $|\sqrt{\frac{n}{n+3}}-1|=1-\sqrt{\frac{n}{n+3}}$, and hence we can see that $\frac{\epsilon}{2}>|\sqrt{\frac{n}{n+3}}-1|$. Therefore, based on previously computed results, we can see that
+$$\epsilon=\frac{\epsilon}{2}+\frac{\epsilon}{2}>|\frac{2n+1}{n+2}-2|+|\sqrt{\frac{n}{n+3}}-1|.$$
+Using Theorem 2.7.3 (the triangle inequality), the above line can be extended to the following
+$$\epsilon=\frac{\epsilon}{2}+\frac{\epsilon}{2}>|\frac{2n+1}{n+2}-2|+|\sqrt{\frac{n}{n+3}}-1|\geq|\frac{2n+1}{n+2}-2+\sqrt{\frac{n}{n+3}}-1|=|\frac{2n+1}{n+2}+\sqrt{\frac{n}{n+3}}-3|.$$
+Therefore, $\forall\epsilon>0$, $\exists N=\max\{\frac{6}{\epsilon}-2,\frac{6}{\epsilon}-3\}$, such that, if $n>N$, then $|\frac{2n+1}{n+2}+\sqrt{\frac{n}{n+3}}-3|<\epsilon$. Thus we have shown that $\frac{2n+1}{n+2}+\sqrt{\frac{n}{n+3}}$ is a convergent sequence to $3$, and hence it follows that $\lim\limits_{n\to\infty}\frac{2n+1}{n+2}+\sqrt{\frac{n}{n+3}}=3$. $\square$
+
+\newpage
+
+**Exercise 2.** Let $u_n$ be a convergent sequence ($u_n$ has a finite limit as $n$ goes to $\infty$). Prove that $|u_n|$ is bounded.
+
+Since I have came up with two very simple ways to prove this theorem I will showcase both of them.
+
+**Proof 1:** $\\$
+Since $u_n$ is a convergent sequence, by Homework 2.5.1, it follows that $|u_n|$ is convergent. Furthermore, since $|u_n|$ is convergent, by Theorem 6.5.2, it follows that $|u_n|$ is a bounded sequence. $\square$ 
+
+**Proof 2:** $\\$
+Since $u_n$ is a convergent sequence, by Theorem 6.5.2, it follows that $u_n$ is a bounded sequence. Therefore, $\exists m,M$, such that, $m\leq u_n\leq M,\:\forall n$. Furthermore, since $m\leq u_n\leq M$, by Homework 1.3.1, it follows that $|u_n|\leq\max(|m|,|M|)$. Furthermore, by the definition of the absolute value it follows that $0\leq|u_n|$. Thus we can see that $0\leq|u_n|\leq\max(|m|,|M|),\:\forall n$. Therefore $u_n$ is bounded above by $\max(|m|,|M|)$, and bounded below by $0$. Hence we have shown that, when $u_n$ is convergent, $|u_n|$ is bounded. $\square$
+
+\newpage
+
+**Exercise 3.** Let $a_n$ and $b_n$ be two convergent sequences. Let $A$ and $B$ be their respective limits.
+
+- Assume that $B=0$, prove, using the definition of the limit, that $\lim_{n\to\infty}a_nb_n=AB=0$.
+
+**Proof:** $\\$
+Let $\epsilon>0$. Since $a_n$ is a convergent sequence, by Homework 3.2 (the previous exercise), it follows that $|a_n|$ is bounded. Therefore, $\exists M>0$, such that, $|an|\leq M$ for all $n$. Furthermore, since $b_n$ is convergent to $B=0$, there exists an $N_B$ such that
+$$n>N_B\implies|b_n-0|=|b_n|<\frac{\epsilon}{M}.$$
+Now, if $N=N_B$, then $n>N$ implies that
+$$|a_nb_n-AB|=|a_nb_n-A(0)|=|a_nb_n|.$$
+By Theorem 2.7.2, it follows that $|a_nb_n|=|a_n||b_n|$. Since $|a_n|\leq M$ and $|b_n|<\frac{\epsilon}{M}$, by Theorem 2.5.7, it follows that $|an||b_n|<M\cdot\frac{\epsilon}{M}=\epsilon$. Therefore, $\forall\epsilon>0$, $\exists N=N_B$, such that, if $n>N$, then $|a_nb_n-AB|=|a_nb_n-A(0)|=|anb_n|<\epsilon$. Thus we have shown that, if $a_n$ and $b_n$ are two convergent sequences, and $B=0$, then $a_nb_n$ is also a convergent sequence to $AB=0$, and hence it follows that $\lim_{n\to\infty}a_nb_n=AB=0$. $\square$
+
+- Assume that $B\neq0$, prove, using the definition of the limit, that $\lim_{n\to\infty}a_nb_n=AB$.
+
+Since I have came up with two ways to prove this theorem I will showcase both of them.
+
+**Proof 1:** $\\$
+Let $\epsilon>0$. Since $a_n$ is a convergent sequence, by Homework 3.2 (the previous exercise), it follows that $|a_n|$ is bounded. Therefore, $\exists M>0$, such that, $|a_n|\leq M$ for all $n$. Furthermore, since $a_n$ is convergent to $A$, there exists an $N_A$ such that
+$$n>N_A\implies|a_n-A|<\frac{\epsilon}{2(|B|+1)}.$$
+Also, since $b_n$ is convergent to $B$, there exists an $N_B$ such that
+$$n>N_B\implies|b_n-B|<\frac{\epsilon}{2M}.$$
+Now, if $N>\max(N_A,N_B)$ and we use the fact that $a_nb_n-AB=a_n(b_n-B)+B(a_n-A)$, then $n>N$ implies that
+$$|a_nb_n-AB|=|a_n(b_n-B)+B(a_n-A)|\leq|a_n(b_n-B)|+|B(a_n-A)|=|a_n||b_n-B|+|B||a_n-A|.$$
+Where the first inequality is the result of Theorem 2.7.3 (the triangle inequality), and the second inequality is the result of Theorem 2.7.2. Since $|a_n|\leq M$ and $|b_n-B|<\frac{\epsilon}{2M}$, by Theorem 2.5.7, it follows that $|a_n||b_n-B|<M\cdot\frac{\epsilon}{2M}=\frac{\epsilon}{2}$. Similarly, since $0\leq|B|$ and $|a_n-A|<\frac{\epsilon}{2(|B|+1)}$, using Theorem 2.5.7 twice, it follows that $|B||a_n-A|<|B|\cdot\frac{\epsilon}{2(|B|+1)}<|B|\cdot\frac{\epsilon}{2|B|}=\frac{\epsilon}{2}$. Thus, since $|a_n||b_n-B|<\frac{\epsilon}{2}$ and $|B||a_n-A|<\frac{\epsilon}{2}$, by Theorem 2.5.6 it follows that $|a_n||b_n-B|+|B||a_n-A|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$. Therefore, $\forall\epsilon>0$, $\exists N=\max(N_A,N_B)$, such that, if $n>N$, then $|a_nb_n-AB|<\epsilon$. Thus we have shown that, if $a_n$ and $b_n$ are two convergent sequences, then $a_nb_n$ is also a convergent sequence to $AB$, and hence it follows that $\lim_{n\to\infty}a_nb_n=AB$. $\square$
+
+We will now move onto the second proof. This is done below.
+
+**Proof 2:** $\\$
+Let $\epsilon>0$. Since $a_n$ is a convergent sequence, by Homework 3.2 (the previous exercise), it follows that $|a_n|$ is bounded. Therefore, $\exists M>0$, such that, $|a_n|\leq M$ for all $n$. In particular, if we use the Archimedian law of real numbers with $n=1$, since $M>0$, we can choose this $M$ such that $|B|<M$. Furthermore, since $a_n$ is convergent to $A$, there exists an $N_A$ such that
+$$n>N_A\implies|a_n-A|<\frac{\epsilon}{2M}.$$
+Also, since $b_n$ is convergent to $B$, there exists an $N_B$ such that
+$$n>N_B\implies|b_n-B|<\frac{\epsilon}{2M}.$$
+Now, if $N>\max(N_A,N_B)$ and we use the fact that $a_nb_n-AB=a_n(b_n-B)+B(a_n-A)$, then $n>N$ implies that
+$$|a_nb_n-AB|=|a_n(b_n-B)+B(a_n-A)|\leq|a_n(b_n-B)|+|B(a_n-A)|=|a_n||b_n-B|+|B||a_n-A|.$$
+Where the first inequality is the result of Theorem 2.7.3 (the triangle inequality), and the second inequality is the result of Theorem 2.7.2. Since $|a_n|\leq M$ and $|b_n-B|<\frac{\epsilon}{2M}$, by Theorem 2.5.7, it follows that $|a_n||b_n-B|<M\cdot\frac{\epsilon}{2M}=\frac{\epsilon}{2}$. Similarly, since $|B|<M$ and $|a_n-A|<\frac{\epsilon}{2M}$, by Theorem 2.5.7, it follows that $|B||a_n-A|<M\cdot\frac{\epsilon}{2M}=\frac{\epsilon}{2}$. Thus, since $|a_n||b_n-B|<\frac{\epsilon}{2}$ and $|B||a_n-A|<\frac{\epsilon}{2}$, by Theorem 2.5.6 it follows that $|a_n||b_n-B|+|B||a_n-A|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$. Therefore, $\forall\epsilon>0$, $\exists N=\max(N_A,N_B)$, such that, if $n>N$, then $|a_nb_n-AB|<\epsilon$. Thus we have shown that, if $a_n$ and $b_n$ are two convergent sequences, then $a_nb_n$ is also a convergent sequence to $AB$, and hence it follows that $\lim_{n\to\infty}a_nb_n=AB$. $\square$
+
+\newpage
+
+**Exercise 4.** Given a convergent sequence $a_n$, prove $|a_n|$ is convergent.
+
+This theorem was proven to be true in Homework 2.5.1. With that being said, I will simply display the proof from that homework.
+
+**Proof:** $\\$
+Let $a_n$ be any convergent sequence. Since $a_n$ is convergent this means that $\exists L$ such that, $\forall\epsilon>0$, $\exists N$, such that, if $n>N$, then $|a_n-L|<\epsilon$. Since $a_n,L\in\mathbb{R}$ and the real numbers are totally ordered, it follows by Theorem 3.7.4 (the second theorem I proved in the appendix of Homework 2), that $||a_n|-|L||\leq|a_n-L|$. Since $|a_n-L|<\epsilon$, it follows that $||a_n|-|L||\leq|a_n-L|<\epsilon$. Thus, $\forall\epsilon>0$, $\exists N$, such that, if $n>N$, then $||a_n|-|L||<\epsilon$, which means that $|a_n|$ converges to $|L|$. Therefore for any sequence $a_n$, if $a_n$ is convergent, then $|a_n|$ is convergent. $\square$
+
+\newpage
+
+**Exercise 5.** Given two sequences $a_n$ and $b_n$ such that $\lim\limits_{n\to\infty}a_n=L$ and $\lim\limits_{n\to\infty}b_n=\infty$
+
+- Prove that $\lim\limits_{n\to\infty}a_n+b_n=\infty$.
+
+**Proof:** $\\$
+Let $A\in\mathbb{R}$. Since $a_n$ is convergent to $L$, there exists an $N_A$ such that
+$$n>N_A\implies|a_n-L|<327\implies L-327<a_n$$
+Also, since $\lim\limits_{n\to\infty}b_n=\infty$, there exists an $N_B$ such that
+$$n>N_B\implies b_n>A-L+327.$$
+Since $L-327<a_n$ and $A-L+327<b_n$, by Theorem 2.5.6 it follows that $L-327+A-L+327<a_n+b_n$. Now, if $N=\max(N_A,N_B)$, then $n>N$ implies that
+$$a_n+b_n>L-327+A-L+327=A$$
+Therefore, $\forall A\in\mathbb{R}$, $\exists N=\max(N_A,N_B)$, such that, if $n>N$, then
+$a_n+b_n>A$. Thus we have shown that $a_n+b_n$ diverges to $\infty$, and hence it follows that $\lim\limits_{n\to\infty}a_n+b_n=\infty$. $\square$
+
+Note that, instead of $327$, we could've chosen any number greater than $0$ and the proof still would've worked.
+
+- Prove that $\lim\limits_{n\to\infty}\frac{1}{b_n}=0$.
+
+**Proof:** $\\$
+Let $\epsilon>0$. Since $\lim\limits_{n\to\infty}b_n=\infty$, $\exists N$, such that, if $n>N$, then $b_n>\frac{1}{\epsilon}$. Since $b_n>\frac{1}{\epsilon}$, it follows that $\frac{1}{b_n}<\epsilon$. Furthermore, since $b_n>\frac{1}{\epsilon}>0$, this implies that $b_n>0$, and thus $b_n=|b_n|$. Therefore we can rewrite $\frac{1}{b_n}<\epsilon$ as $\frac{1}{|b_n|}<\epsilon$. However, notice that $\frac{1}{|b_n|}=\vert\frac{1}{b_n}\vert=\vert\frac{1}{b_n}-0\vert<\epsilon$. Therefore,
+$\forall\epsilon>0$, $\exists N$, such that, if $n>N$, then $\vert\frac{1}{b_n}-0\vert<\epsilon$. Thus we have shown that, if $\lim\limits_{n\to\infty}b_n=\infty$, then $\frac{1}{b_n}$ is a convergent sequence to $0$, and hence it follows that $\lim\limits_{n\to\infty}\frac{1}{b_n}=0$. $\square$
+
+\newpage
